@@ -25,13 +25,31 @@ function displayCelebGif() {
 
             gifDiv.append(p);
             gifDiv.append(gifImage);
-
+            
             gifDiv.attr("class", "gifDiv");
+            gifImage.attr("data-animate", results[i].images.fixed_height.url);
+            gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+            gifImage.attr("data-state", "animate");
 
             $("#celebrity-view").prepend(gifDiv);
         }
     });
 }
+
+
+//On click, run a function that changes the state of the gif depending on which state it's already in.
+$("img").on("click", function() {
+    var state = $(this).attr("data-state");
+
+    if (state === "animate") {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+    else {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    }
+});
 
 
 
@@ -66,3 +84,12 @@ function addCelebrity() {
 $(document).on("click", ".celeb-button", displayCelebGif);
 
 renderButtons();
+
+
+/*
+
+Bugs:
+1. renderButtons function is not actually rendering buttons when submitting new celebrities into the form
+2. click event listener is not changing the state of gifs
+
+*/
