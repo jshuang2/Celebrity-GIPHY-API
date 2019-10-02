@@ -4,7 +4,7 @@ var celebrities = ["leonardo dicaprio", "carey mulligan", "tom hardy", "shailene
 //Create a function that will add gifs to the html via the API when buttons are clicked
 function displayCelebGif() {
     var thisCeleb = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisCeleb + "&api_key=GnKyD9C3X7IDAdHB6lUZKXonzOyYEYwK&limit=20";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisCeleb + "&api_key=GnKyD9C3X7IDAdHB6lUZKXonzOyYEYwK&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -14,13 +14,21 @@ function displayCelebGif() {
 
         var results = response.data;
 
-        for(var i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
             
             var gifDiv = $("<div>");
             var rating = results[i].rating;
             var p = $("<p>").text("Rating: " + rating);
             var gifImage = $("<img>");
 
+            /*My attempt at creating an if statement that checks whether there are gifs already populated. If so, then empty all content
+            
+            if ($(this).length > 0) {
+                $(this).empty();
+            }
+
+            */
+            
             gifImage.attr("src", results[i].images.fixed_height.url);
 
             gifDiv.append(p);
@@ -89,7 +97,7 @@ renderButtons();
 /*
 
 Bugs:
-1. renderButtons function is not actually rendering buttons when submitting new celebrities into the form
+1. addCelebrity and renderButtons function is not actually rendering buttons when submitting new celebrities into the form
 2. click event listener is not changing the state of gifs
 
 */
