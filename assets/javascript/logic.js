@@ -26,6 +26,8 @@ function displayCelebGif() {
             gifDiv.append(p);
             gifDiv.append(gifImage);
 
+            gifDiv.attr("class", "gifDiv");
+
             $("#celebrity-view").prepend(gifDiv);
         }
     });
