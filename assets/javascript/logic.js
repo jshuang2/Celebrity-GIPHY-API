@@ -1,3 +1,12 @@
+/*
+
+Bugs:
+1. addCelebrity and renderButtons function is not actually rendering buttons when submitting new celebrities into the form
+2. click event listener is not changing the state of gifs
+
+*/
+
+
 //Create an array that will hold the list of celebrities
 var celebrities = ["leonardo dicaprio", "carey mulligan", "tom hardy", "shailene woodley"]
 
@@ -20,14 +29,6 @@ function displayCelebGif() {
             var rating = results[i].rating;
             var p = $("<p>").text("Rating: " + rating);
             var gifImage = $("<img>");
-
-            /*My attempt at creating an if statement that checks whether there are gifs already populated. If so, then empty all content
-            
-            if ($(this).length > 0) {
-                $(this).empty();
-            }
-
-            */
             
             gifImage.attr("src", results[i].images.fixed_height.url);
 
@@ -94,10 +95,3 @@ $(document).on("click", ".celeb-button", displayCelebGif);
 renderButtons();
 
 
-/*
-
-Bugs:
-1. addCelebrity and renderButtons function is not actually rendering buttons when submitting new celebrities into the form
-2. click event listener is not changing the state of gifs
-
-*/

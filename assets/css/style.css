@@ -2,3 +2,23 @@
     float: left;
     margin-right: 4px;
 }
+
+.celeb-button {
+    margin-right: 4px;
+    border-radius: 6px;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    background-color: #00ace6;
+    color: white;
+    font-weight: bold;
+    opacity:.8;
+}
+
+.navbar {
+    margin-bottom: 10px;
+    border-bottom: .5px solid grey;
+}
+
+.container {
+    background-color: #f8f8f8;
+}
