@@ -19,6 +19,7 @@ function displayCelebGif() {
         url: queryURL,
         method: "GET"
     }).then(function(response){
+        $("#celebrity-view").empty();
         console.log(response);
 
         var results = response.data;
