@@ -39,6 +39,7 @@ function displayCelebGif() {
             gifImage.attr("data-animate", results[i].images.fixed_height.url);
             gifImage.attr("data-still", results[i].images.fixed_height_still.url);
             gifImage.attr("data-state", "animate");
+            gifImage.attr("class", "gifImage");
 
             $("#celebrity-view").prepend(gifDiv);
         }
@@ -47,7 +48,7 @@ function displayCelebGif() {
 
 
 //On click, run a function that changes the state of the gif depending on which state it's already in.
-$("img").on("click", function() {
+$(document).on("click", ".gifImage", function() {
     var state = $(this).attr("data-state");
 
     if (state === "animate") {
@@ -77,20 +78,20 @@ function renderButtons() {
 }
 
 //Create a function that will take an event, push a new celebrity to the celebrities array, and create a button for it.
-function addCelebrity() {
-    $("#add-celebrity").on("click", function(event) {
-        event.preventDefault();
 
-        var celeb = $("#celebrity-input").val().trim();
-        
-        celebrities.push(celeb);
-        console.log(celebrities);
+$("#add-celebrity").on("click", function(event) {
+    event.preventDefault();
 
-        renderButtons();
-    });
-}
+    var celeb = $("#celebrity-input").val().trim();
+    
+    celebrities.push(celeb);
+    console.log(celebrities);
+
+    renderButtons();
+});
 
 $(document).on("click", ".celeb-button", displayCelebGif);
+
 
 renderButtons();
 
